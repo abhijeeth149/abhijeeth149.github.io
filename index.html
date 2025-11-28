@@ -6,115 +6,588 @@
   <title>Gandla Abhijeeth | Full-Stack & ML Developer</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
   <style>
     :root {
-      --primary: #2563eb; --dark: #1e293b; --light: #f8fafc; --gray: #e2e8f0;
+      --primary: #2563eb;
+      --primary-soft: #3b82f6;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #e2e8f0;
+      --text-main: #0f172a;
+      --card-bg: #ffffff;
+      --body-bg: #f8fafc;
     }
+
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Poppins',sans-serif; background:var(--light); color:var(--dark); line-height:1.6; }
+
+    body {
+      font-family:'Poppins',sans-serif;
+      background:var(--body-bg);
+      color:var(--text-main);
+      line-height:1.6;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
     .container { max-width:1100px; margin:0 auto; padding:0 20px; }
 
-    /* Header */
-    header { background:linear-gradient(135deg,#667eea,#764ba2); color:white; padding:3.5rem 0; text-align:center; }
-    .profile-img {
-      width:160px; height:160px; border-radius:50%;
-      border:4px solid white; object-fit:cover;
-      margin-bottom:15px;
-      box-shadow:0 6px 20px rgba(0,0,0,0.2);
+    /* Theme Toggle Button */
+    .theme-toggle {
+      position:fixed;
+      top:18px;
+      right:20px;
+      z-index:100;
+      border:none;
+      padding:8px 14px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      cursor:pointer;
+      font-size:0.9rem;
+      background:#0f172a;
+      color:#f9fafb;
+      box-shadow:0 8px 20px rgba(0,0,0,0.25);
     }
-    header h1 { font-size:2.8rem; margin-bottom:0.5rem; }
-    header p { font-size:1.3rem; opacity:0.9; }
 
-    .social-links { margin-top:1rem; }
-    .social-links a { color:white; font-size:1.6rem; margin:0 12px; transition:0.3s; }
-    .social-links a:hover { transform:translateY(-4px); }
+    .theme-toggle i {
+      font-size:1rem;
+    }
+
+    /* Header */
+    header {
+      background:linear-gradient(135deg,#667eea,#764ba2);
+      color:white;
+      padding:4rem 0 3.5rem;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    header::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 60%);
+      opacity:0.9;
+      pointer-events:none;
+    }
+
+    .profile-img {
+      width:160px;
+      height:160px;
+      border-radius:50%;
+      border:4px solid white;
+      object-fit:cover;
+      margin-bottom:15px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.35);
+      position:relative;
+      z-index:1;
+    }
+
+    header h1 {
+      font-size:2.8rem;
+      margin-bottom:0.4rem;
+      position:relative;
+      z-index:1;
+    }
+
+    header p {
+      font-size:1.1rem;
+      opacity:0.95;
+      position:relative;
+      z-index:1;
+    }
+
+    .typing-text {
+      margin-top:0.4rem;
+      font-size:1.05rem;
+      opacity:0.95;
+    }
+
+    #typing {
+      font-weight:600;
+    }
+
+    .cursor {
+      display:inline-block;
+      width:2px;
+      background:white;
+      margin-left:3px;
+      animation:blink 0.9s infinite;
+    }
+
+    @keyframes blink {
+      0%,50% { opacity:1; }
+      50.01%,100% { opacity:0; }
+    }
+
+    .social-links {
+      margin-top:1.2rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .social-links a {
+      color:white;
+      font-size:1.6rem;
+      margin:0 12px;
+      transition:0.3s;
+    }
+
+    .social-links a:hover {
+      transform:translateY(-4px) scale(1.05);
+    }
 
     /* Sections */
-    section { padding:4rem 0; }
-    h2 { font-size:2rem; color:var(--primary); margin-bottom:2rem; text-align:center; position:relative; }
-    h2::after { content:''; width:80px; height:4px; background:var(--primary); position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); }
+    section {
+      padding:4rem 0;
+    }
 
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; }
-    .card { background:white; border-radius:12px; padding:1.8rem; box-shadow:0 10px 30px rgba(0,0,0,0.08); transition:0.3s; }
-    .card:hover { transform:translateY(-10px); box-shadow:0 20px 40px rgba(0,0,0,0.15); }
+    h2 {
+      font-size:2rem;
+      color:var(--primary);
+      margin-bottom:2rem;
+      text-align:center;
+      position:relative;
+    }
 
-    .btn { display:inline-block; background:var(--primary); color:white; padding:10px 20px; border-radius:50px; text-decoration:none; margin-top:10px; transition:0.3s; }
-    .btn:hover { background:#1d4ed8; transform:scale(1.05); }
+    h2::after {
+      content:'';
+      width:80px;
+      height:4px;
+      background:var(--primary);
+      position:absolute;
+      bottom:-10px;
+      left:50%;
+      transform:translateX(-50%);
+      border-radius:999px;
+    }
 
-    footer { background:var(--dark); color:white; text-align:center; padding:2rem 0; }
-    @media(max-width:768px) { header h1{font-size:2.2rem;} header p{font-size:1.1rem;} }
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:2rem;
+    }
+
+    .card {
+      background:var(--card-bg);
+      border-radius:14px;
+      padding:1.8rem;
+      box-shadow:0 10px 30px rgba(15,23,42,0.08);
+      transition:0.3s;
+    }
+
+    .card:hover {
+      transform:translateY(-10px);
+      box-shadow:0 20px 45px rgba(15,23,42,0.18);
+    }
+
+    .project {
+      text-align:left;
+    }
+
+    .project-img {
+      width:100%;
+      border-radius:10px;
+      margin-bottom:1rem;
+      object-fit:cover;
+      max-height:190px;
+    }
+
+    .btn {
+      display:inline-block;
+      background:var(--primary);
+      color:white;
+      padding:9px 18px;
+      border-radius:999px;
+      text-decoration:none;
+      margin-top:10px;
+      transition:0.25s;
+      font-size:0.9rem;
+    }
+
+    .btn:hover {
+      background:#1d4ed8;
+      transform:translateY(-1px) scale(1.03);
+    }
+
+    .btn.secondary {
+      background:#111827;
+    }
+
+    /* About text */
+    .about-text {
+      text-align:center;
+      font-size:1.05rem;
+      max-width:800px;
+      margin:0 auto;
+      color:#111827;
+    }
+
+    /* Contact */
+    .contact-wrapper {
+      display:grid;
+      grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+      gap:2rem;
+      align-items:flex-start;
+    }
+
+    form {
+      display:flex;
+      flex-direction:column;
+      gap:0.8rem;
+    }
+
+    label {
+      font-size:0.9rem;
+      font-weight:500;
+    }
+
+    input, textarea {
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid var(--gray);
+      font-family:'Poppins',sans-serif;
+      font-size:0.95rem;
+      outline:none;
+      transition:border 0.2s, box-shadow 0.2s;
+      background:#f9fafb;
+    }
+
+    input:focus, textarea:focus {
+      border-color:var(--primary);
+      box-shadow:0 0 0 2px rgba(37,99,235,0.25);
+      background:#ffffff;
+    }
+
+    textarea {
+      resize:vertical;
+      min-height:120px;
+    }
+
+    .contact-info p {
+      margin-bottom:0.7rem;
+      font-size:0.95rem;
+    }
+
+    .contact-info i {
+      color:var(--primary);
+      margin-right:8px;
+    }
+
+    footer {
+      background:var(--dark);
+      color:white;
+      text-align:center;
+      padding:2rem 0;
+      margin-top:2rem;
+    }
+
+    footer p {
+      font-size:0.9rem;
+      opacity:0.9;
+    }
+
+    /* Dark Mode */
+    body.dark {
+      --body-bg:#020617;
+      --card-bg:#020617;
+      --text-main:#e5e7eb;
+      --gray:#1f2933;
+    }
+
+    body.dark header {
+      background:linear-gradient(135deg,#020617,#111827);
+    }
+
+    body.dark h2 {
+      color:#60a5fa;
+    }
+
+    body.dark h2::after {
+      background:#60a5fa;
+    }
+
+    body.dark .card {
+      box-shadow:0 16px 40px rgba(0,0,0,0.65);
+      border:1px solid #1e293b;
+    }
+
+    body.dark input,
+    body.dark textarea {
+      background:#020617;
+      color:#e5e7eb;
+      border-color:#1f2937;
+    }
+
+    body.dark .btn.secondary {
+      background:#f9fafb;
+      color:#020617;
+    }
+
+    body.dark footer {
+      background:#000000;
+    }
+
+    body.dark .theme-toggle {
+      background:#f9fafb;
+      color:#020617;
+      box-shadow:0 8px 20px rgba(0,0,0,0.55);
+    }
+
+    /* Responsive */
+    @media(max-width:768px) {
+      header h1{font-size:2.2rem;}
+      header p{font-size:1rem;}
+      .contact-wrapper {
+        grid-template-columns:1fr;
+      }
+      .theme-toggle {
+        top:12px;
+        right:12px;
+        padding:7px 12px;
+      }
+    }
   </style>
 </head>
 <body>
 
-<header>
+  <!-- Dark Mode Toggle -->
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon" id="themeIcon"></i>
+    <span id="themeText">Dark</span>
+  </button>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <!-- Profile Image -->
+      <img src="abhijeeth.jpg" alt="Gandla Abhijeeth" class="profile-img">
+
+      <h1>Gandla Abhijeeth</h1>
+      <p>3rd-year B.Tech CSE (AI & ML) • JBIET Hyderabad (CGPA 9.36/10)</p>
+      <p class="typing-text">
+        I am a <span id="typing"></span><span class="cursor"></span>
+      </p>
+
+      <div class="social-links">
+        <a href="tel:+918790368134"><i class="fas fa-phone"></i></a>
+        <a href="mailto:abhijeethgandla650@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/abhijeeth149" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/gandla-abhijeeth-29a671326" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://ruletrainer.in" target="_blank"><i class="fas fa-globe"></i></a>
+      </div>
+    </div>
+  </header>
+
   <div class="container">
-    <!-- ADD YOUR IMAGE HERE -->
-    <img src="abhijeeth.jpg" alt="Gandla Abhijeeth" class="profile-img">
 
-    <h1>Gandla Abhijeeth</h1>
-    <p>Full-Stack Developer & Machine Learning Enthusiast</p>
-    <div class="social-links">
-      <a href="tel:+918790368134"><i class="fas fa-phone"></i></a>
-      <a href="mailto:abhijeethgandla650@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="https://github.com/abhijeeth149" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com/in/gandla-abhijeeth-29a671326" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://ruletrainer.in" target="_blank"><i class="fas fa-globe"></i></a>
-    </div>
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p class="about-text">
+        I am a passionate Full-Stack Developer and Machine Learning enthusiast, currently pursuing
+        B.Tech CSE (AI & ML) at J.B. Institute of Engineering & Technology, Hyderabad.
+        I enjoy building end-to-end solutions — from clean, responsive frontends
+        to robust backends and intelligent ML-powered features.
+        I am currently interning as a Full-Stack Developer and actively contributing to real-world projects.
+      </p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Featured Projects</h2>
+      <div class="grid">
+
+        <div class="card project">
+          <img src="ruletrainer1.png" alt="RuleTrainer Project Screenshot" class="project-img">
+          <h3>RuleTrainer.in – Corporate Training Platform</h3>
+          <p>
+            A full-stack training platform with user authentication, course modules, progress tracking,
+            and admin panel for managing trainees, content, and analytics.
+          </p>
+          <a href="https://ruletrainers.in" target="_blank" class="btn">Live Demo</a>
+          <a href="https://github.com/abhijeeth149" target="_blank" class="btn secondary">GitHub</a>
+        </div>
+
+        <div class="card project">
+          <img src="purv_vaibhav.png" alt="Purv-Vaibhav Project Screenshot" class="project-img">
+          <h3>Purv-Vaibhav HACKX – Smart Cultural Tourism Assistant</h3>
+          <p>
+            AI-powered chatbot that recommends historical places and cultural information using NLP.
+            Built as a college hackathon project and selected as a winning solution.
+          </p>
+          <a href="https://github.com/abhijeeth149/Purv-Vaibahav-HACKX-" target="_blank" class="btn">View Code</a>
+        </div>
+
+        <div class="card project">
+          <img src="traffic_density1.png" alt="Traffic Density Prediction Screenshot" class="project-img">
+          <h3>Traffic Density Prediction System</h3>
+          <p>
+            Machine learning regression model that predicts traffic density using historical data,
+            weather, and time-based features. Includes data preprocessing, feature engineering,
+            and evaluation of multiple ML models.
+          </p>
+          <a href="https://github.com/abhijeeth149/Traffic-Density-Prediction" target="_blank" class="btn">GitHub</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Languages</h3>
+          <p>Python • C • JavaScript • HTML • CSS</p>
+        </div>
+        <div class="card">
+          <h3>Web Development</h3>
+          <p>Full-Stack Development • Responsive Design • REST APIs • Python Backend</p>
+        </div>
+        <div class="card">
+          <h3>Machine Learning</h3>
+          <p>Scikit-learn • NumPy • Pandas • Regression • Classification • Model Evaluation</p>
+        </div>
+        <div class="card">
+          <h3>Tools & Platforms</h3>
+          <p>Git • GitHub • VS Code • Linux • Google Colab</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT + RESUME -->
+    <section id="contact">
+      <h2>Contact & Resume</h2>
+      <div class="contact-wrapper">
+        <!-- Contact Form -->
+        <div class="card">
+          <h3>Let's Connect</h3>
+          <p style="font-size:0.95rem;margin-bottom:0.8rem;">
+            Fill this form to send me a quick email. It will open in your email app.
+          </p>
+          <form action="mailto:abhijeethgandla650@gmail.com" method="post" enctype="text/plain">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="Name" type="text" placeholder="Your name" required>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="Email" type="email" placeholder="you@example.com" required>
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="Message" placeholder="Your message..." required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Contact Info + Resume -->
+        <div class="card contact-info">
+          <h3>Quick Details</h3>
+          <p><i class="fas fa-location-dot"></i>Hyderabad, Telangana, India</p>
+          <p><i class="fas fa-envelope"></i>abhijeethgandla650@gmail.com</p>
+          <p><i class="fas fa-phone"></i>+91 87903 68134</p>
+          <p><i class="fab fa-github"></i>github.com/abhijeeth149</p>
+          <p><i class="fab fa-linkedin"></i>linkedin.com/in/gandla-abhijeeth-29a671326</p>
+
+          <div style="margin-top:1.5rem;">
+            <a href="resume.pdf" class="btn" download>
+              <i class="fas fa-download" style="margin-right:6px;"></i>
+              Download Resume
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
-</header>
 
-<div class="container">
-
-  <section id="about">
-    <h2>About Me</h2>
-    <p style="text-align:center;font-size:1.1rem;max-width:800px;margin:0 auto;">
-      3rd-year B.Tech CSE (AI & ML) student at J.B. Institute of Engineering & Technology, Hyderabad with CGPA 9.36/10.<br>
-      Passionate about building end-to-end web applications and intelligent systems. Currently interning as a Full-Stack Developer.
-    </p>
-  </section>
-
-  <section id="projects">
-    <h2>Featured Projects</h2>
-    <div class="grid">
-      <div class="card project">
-        <h3>RuleTrainer.in – Corporate Training Platform</h3>
-        <p>Full-stack web app with user authentication, course delivery, progress tracking & admin panel</p>
-        <a href="https://ruletrainer.in" target="_blank" class="btn">Live Demo</a>
-        <a href="https://github.com/abhijeeth149" class="btn" style="background:#333;margin-left:10px;">GitHub</a>
-      </div>
-
-      <div class="card project">
-        <h3>Purv-Vaibhav HACKX – Smart Cultural Tourism Assistant</h3>
-        <p>AI-powered chatbot using NLP — <strong>College Hackathon Winning Project</strong></p>
-        <a href="https://github.com/abhijeeth149/Purv-Vaibahav-HACKX-" target="_blank" class="btn">View Code</a>
-      </div>
-
-      <div class="card project">
-        <h3>Traffic Density Prediction System</h3>
-        <p>ML regression model using historical + weather data</p>
-        <a href="https://github.com/abhijeeth149/Traffic-Density-Prediction" target="_blank" class="btn">GitHub</a>
-      </div>
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Gandla Abhijeeth • Built with ❤️ using HTML, CSS & a bit of JavaScript</p>
     </div>
-  </section>
+  </footer>
 
-  <section id="skills">
-    <h2>Technical Skills</h2>
-    <div class="grid">
-      <div class="card"><h3>Languages</h3><p>Python • C • JavaScript • HTML • CSS</p></div>
-      <div class="card"><h3>Web Development</h3><p>Full-Stack • Responsive Design • Python Backend</p></div>
-      <div class="card"><h3>Machine Learning</h3><p>Scikit-learn • NumPy • Pandas • Regression • Classification</p></div>
-      <div class="card"><h3>Tools</h3><p>Git • GitHub • VS Code • Linux</p></div>
-    </div>
-  </section>
+  <!-- JavaScript for typing effect & dark mode -->
+  <script>
+    // Typing effect
+    const roles = [
+      "Full-Stack Developer",
+      "Machine Learning Enthusiast",
+      "Problem Solver",
+      "Tech Explorer"
+    ];
 
-</div>
+    const typingSpan = document.getElementById("typing");
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-<footer>
-  <div class="container">
-    <p>&copy; 2025 Gandla Abhijeeth | </p>
-  </div>
-</footer>
+    function type() {
+      const current = roles[roleIndex];
+      if (isDeleting) {
+        charIndex--;
+      } else {
+        charIndex++;
+      }
+
+      typingSpan.textContent = current.slice(0, charIndex);
+
+      let delay = 120;
+      if (isDeleting) delay = 70;
+      if (!isDeleting && charIndex === current.length) {
+        delay = 1200;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        delay = 350;
+      }
+
+      setTimeout(type, delay);
+    }
+
+    // Dark mode toggle
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+    const themeText = document.getElementById("themeText");
+
+    function setTheme(dark) {
+      if (dark) {
+        document.body.classList.add("dark");
+        themeIcon.classList.remove("fa-moon");
+        themeIcon.classList.add("fa-sun");
+        themeText.textContent = "Light";
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.body.classList.remove("dark");
+        themeIcon.classList.remove("fa-sun");
+        themeIcon.classList.add("fa-moon");
+        themeText.textContent = "Dark";
+        localStorage.setItem("theme", "light");
+      }
+    }
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      setTheme(true);
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const isDark = document.body.classList.contains("dark");
+      setTheme(!isDark);
+    });
+
+    // Start typing effect after DOM load
+    document.addEventListener("DOMContentLoaded", () => {
+      type();
+    });
+  </script>
 
 </body>
 </html>
