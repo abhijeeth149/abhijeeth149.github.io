@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gandla Abhijeeth | Full-Stack & ML Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary: #2563eb; --dark: #1e293b; --light: #f8fafc; --gray: #e2e8f0;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Poppins',sans-serif; background:var(--light); color:var(--dark); line-height:1.6; }
+    .container { max-width:1100px; margin:0 auto; padding:0 20px; }
+
+    /* Header */
+    header { background:linear-gradient(135deg,#667eea,#764ba2); color:white; padding:3.5rem 0; text-align:center; }
+    .profile-img {
+      width:160px; height:160px; border-radius:50%;
+      border:4px solid white; object-fit:cover;
+      margin-bottom:15px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.2);
+    }
+    header h1 { font-size:2.8rem; margin-bottom:0.5rem; }
+    header p { font-size:1.3rem; opacity:0.9; }
+
+    .social-links { margin-top:1rem; }
+    .social-links a { color:white; font-size:1.6rem; margin:0 12px; transition:0.3s; }
+    .social-links a:hover { transform:translateY(-4px); }
+
+    /* Sections */
+    section { padding:4rem 0; }
+    h2 { font-size:2rem; color:var(--primary); margin-bottom:2rem; text-align:center; position:relative; }
+    h2::after { content:''; width:80px; height:4px; background:var(--primary); position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); }
+
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; }
+    .card { background:white; border-radius:12px; padding:1.8rem; box-shadow:0 10px 30px rgba(0,0,0,0.08); transition:0.3s; }
+    .card:hover { transform:translateY(-10px); box-shadow:0 20px 40px rgba(0,0,0,0.15); }
+
+    .btn { display:inline-block; background:var(--primary); color:white; padding:10px 20px; border-radius:50px; text-decoration:none; margin-top:10px; transition:0.3s; }
+    .btn:hover { background:#1d4ed8; transform:scale(1.05); }
+
+    footer { background:var(--dark); color:white; text-align:center; padding:2rem 0; }
+    @media(max-width:768px) { header h1{font-size:2.2rem;} header p{font-size:1.1rem;} }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <!-- ADD YOUR IMAGE HERE -->
+    <img src="abhijeeth.jpg" alt="Gandla Abhijeeth" class="profile-img">
+
+    <h1>Gandla Abhijeeth</h1>
+    <p>Full-Stack Developer & Machine Learning Enthusiast</p>
+    <div class="social-links">
+      <a href="tel:+918790368134"><i class="fas fa-phone"></i></a>
+      <a href="mailto:abhijeethgandla650@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/abhijeeth149" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/gandla-abhijeeth-29a671326" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://ruletrainer.in" target="_blank"><i class="fas fa-globe"></i></a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p style="text-align:center;font-size:1.1rem;max-width:800px;margin:0 auto;">
+      3rd-year B.Tech CSE (AI & ML) student at J.B. Institute of Engineering & Technology, Hyderabad with CGPA 9.36/10.<br>
+      Passionate about building end-to-end web applications and intelligent systems. Currently interning as a Full-Stack Developer.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Featured Projects</h2>
+    <div class="grid">
+      <div class="card project">
+        <h3>RuleTrainer.in – Corporate Training Platform</h3>
+        <p>Full-stack web app with user authentication, course delivery, progress tracking & admin panel</p>
+        <a href="https://ruletrainer.in" target="_blank" class="btn">Live Demo</a>
+        <a href="https://github.com/abhijeeth149" class="btn" style="background:#333;margin-left:10px;">GitHub</a>
+      </div>
+
+      <div class="card project">
+        <h3>Purv-Vaibhav HACKX – Smart Cultural Tourism Assistant</h3>
+        <p>AI-powered chatbot using NLP — <strong>College Hackathon Winning Project</strong></p>
+        <a href="https://github.com/abhijeeth149/Purv-Vaibahav-HACKX-" target="_blank" class="btn">View Code</a>
+      </div>
+
+      <div class="card project">
+        <h3>Traffic Density Prediction System</h3>
+        <p>ML regression model using historical + weather data</p>
+        <a href="https://github.com/abhijeeth149/Traffic-Density-Prediction" target="_blank" class="btn">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="grid">
+      <div class="card"><h3>Languages</h3><p>Python • C • JavaScript • HTML • CSS</p></div>
+      <div class="card"><h3>Web Development</h3><p>Full-Stack • Responsive Design • Python Backend</p></div>
+      <div class="card"><h3>Machine Learning</h3><p>Scikit-learn • NumPy • Pandas • Regression • Classification</p></div>
+      <div class="card"><h3>Tools</h3><p>Git • GitHub • VS Code • Linux</p></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Gandla Abhijeeth | </p>
+  </div>
+</footer>
+
+</body>
+</html>
