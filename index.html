@@ -473,6 +473,107 @@
       color: var(--gray);
     }
 
+    /* Experience Section (Timeline) */
+    #experience {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      border-left: 3px solid var(--primary-light);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      background: white;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.62rem;
+      top: 2rem;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--gradient-1);
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px var(--primary-light);
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-header h3 {
+      font-size: 1.25rem;
+      color: var(--text-main);
+    }
+
+    .timeline-date {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: white;
+      background: var(--gradient-1);
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .timeline-company {
+      font-size: 0.95rem;
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-item ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .timeline-item ul li {
+      font-size: 0.95rem;
+      color: var(--gray);
+      padding-left: 1.4rem;
+      position: relative;
+    }
+
+    .timeline-item ul li::before {
+      content: '\f101';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
     /* Projects Section */
     .projects-grid {
       display: grid;
@@ -487,6 +588,8 @@
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
       transition: all 0.4s ease;
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card:hover {
@@ -544,12 +647,27 @@
 
     .project-content {
       padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .project-content h3 {
       font-size: 1.3rem;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.4rem;
       color: var(--text-main);
+    }
+
+    .project-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      background: rgba(99, 102, 241, 0.1);
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+      width: fit-content;
     }
 
     .project-content p {
@@ -557,11 +675,13 @@
       font-size: 0.95rem;
       line-height: 1.6;
       margin-bottom: 1.5rem;
+      flex: 1;
     }
 
     .project-links {
       display: flex;
       gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .btn {
@@ -603,7 +723,7 @@
 
     /* Skills Section */
     #skills {
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      background: white;
     }
 
     .skills-container {
@@ -613,7 +733,7 @@
     }
 
     .skill-category {
-      background: white;
+      background: var(--body-bg);
       border-radius: 20px;
       padding: 2rem;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -675,18 +795,62 @@
     }
 
     .skill-item {
-      background: var(--body-bg);
+      background: white;
       padding: 0.5rem 1rem;
       border-radius: 20px;
       font-size: 0.9rem;
       color: var(--text-main);
       transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
     .skill-item:hover {
       background: var(--primary);
       color: white;
       transform: scale(1.05);
+    }
+
+    /* Certifications */
+    .certs-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cert-item {
+      background: var(--body-bg);
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .cert-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .cert-item i {
+      font-size: 1.4rem;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .cert-item h4 {
+      font-size: 1rem;
+      color: var(--text-main);
+      margin-bottom: 0.2rem;
+    }
+
+    .cert-item p {
+      font-size: 0.85rem;
+      color: var(--gray);
     }
 
     /* Contact Section */
@@ -893,13 +1057,16 @@
       color: #e2e8f0;
     }
 
-    body.dark #about {
+    body.dark #about,
+    body.dark #skills {
       background: #0f172a;
     }
 
     body.dark .about-card,
     body.dark .skill-category,
-    body.dark .contact-form-container {
+    body.dark .contact-form-container,
+    body.dark .timeline-item,
+    body.dark .cert-item {
       background: #1e293b;
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
@@ -916,7 +1083,7 @@
       color: white;
     }
 
-    body.dark #skills {
+    body.dark #experience {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     }
 
@@ -977,6 +1144,14 @@
       h2 {
         font-size: 2rem;
       }
+
+      .timeline {
+        padding-left: 1.5rem;
+      }
+
+      .timeline-item::before {
+        left: -2.05rem;
+      }
     }
 
     /* Mobile Menu Button */
@@ -1005,6 +1180,7 @@
       <div class="logo">GANDLA ABHIJEETH.</div>
       <div class="nav-links">
         <a href="#about">About</a>
+        <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
@@ -1042,11 +1218,11 @@
 
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-number">9.36</span>
+          <span class="stat-number">9.07</span>
           <span class="stat-label">CGPA</span>
         </div>
         <div class="stat">
-          <span class="stat-number">3+</span>
+          <span class="stat-number">7+</span>
           <span class="stat-label">Projects</span>
         </div>
         <div class="stat">
@@ -1060,7 +1236,7 @@
         <a href="mailto:abhijeethgandla650@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         <a href="https://github.com/abhijeeth149" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
         <a href="https://linkedin.com/in/gandla-abhijeeth-29a671326" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://ruletrainer.in" target="_blank" title="Website"><i class="fas fa-globe"></i></a>
+        <a href="https://ruletrainers.in" target="_blank" title="Website"><i class="fas fa-globe"></i></a>
       </div>
     </div>
 
@@ -1085,13 +1261,13 @@
           </p>
           <p>
             I specialize in building end-to-end solutions — from crafting beautiful, responsive user interfaces 
-            to developing robust backend systems and implementing intelligent ML-powered features. My approach 
-            combines technical expertise with creative problem-solving.
+            to developing robust backend systems, automation pipelines, and intelligent ML-powered features. My 
+            approach combines technical expertise with creative problem-solving.
           </p>
           <p>
-            Currently interning as a Full-Stack Developer, I'm actively contributing to real-world projects 
-            that make a difference. I believe in writing clean, maintainable code and staying updated with 
-            the latest technologies.
+            Currently working as a Paid Automation Intern, I'm actively building automation pipelines and testing 
+            frameworks alongside my full-stack and machine learning projects. I believe in writing clean, 
+            maintainable code and staying updated with the latest technologies.
           </p>
         </div>
 
@@ -1099,12 +1275,12 @@
           <div class="about-card">
             <i class="fas fa-graduation-cap"></i>
             <h4>Education</h4>
-            <p>B.Tech CSE (AI & ML)<br>CGPA: 9.36/10</p>
+            <p>B.Tech CSE (AI & ML)<br>CGPA: 9.07/10</p>
           </div>
           <div class="about-card">
             <i class="fas fa-briefcase"></i>
             <h4>Experience</h4>
-            <p>Full-Stack Intern<br>Active Contributor</p>
+            <p>Automation Intern<br>3+ Internships</p>
           </div>
           <div class="about-card">
             <i class="fas fa-code"></i>
@@ -1114,9 +1290,55 @@
           <div class="about-card">
             <i class="fas fa-brain"></i>
             <h4>AI/ML</h4>
-            <p>Machine Learning<br>Data Science</p>
+            <p>Machine Learning<br>Computer Vision</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="fade-in">
+      <h2>Experience</h2>
+      <p class="section-subtitle">My professional journey so far</p>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>Paid Automation Intern</h3>
+            <span class="timeline-date">Jun 2026 – Present</span>
+          </div>
+          <div class="timeline-company">BANC APP AUTOMATION, Hyderabad</div>
+          <ul>
+            <li>Working on automation solutions using Django, n8n workflows, and Selenium for web scraping & testing</li>
+            <li>Using openpyxl for data processing pipelines</li>
+            <li>Developing and maintaining backend automation pipelines and testing frameworks</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>Paid Full-Stack Development Intern</h3>
+            <span class="timeline-date">Nov 2025 – Feb 2026</span>
+          </div>
+          <div class="timeline-company">Knowledge Hub, Sun City, Hyderabad</div>
+          <ul>
+            <li>Developed "Rule Trainers" — a Full-Stack Corporate Training & Learning Management System in the EdTech domain</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>Full-Stack Development Intern</h3>
+            <span class="timeline-date">May 2025 – Jul 2025</span>
+          </div>
+          <div class="timeline-company">Rule Trainers, Hyderabad</div>
+          <ul>
+            <li>Designed & deployed the official company website ruletrainers.in from scratch</li>
+            <li>Built user authentication, course modules, progress tracking & admin panel using Python and modern frontend tech</li>
+          </ul>
+        </div>
+
       </div>
     </section>
 
@@ -1129,24 +1351,91 @@
 
         <div class="project-card">
           <div class="project-image">
-            <img src="ruletrainer1.png" alt="RuleTrainer Project" class="project-img">
+            <img src="travelo.png" alt="Travelo Project" class="project-img">
             <div class="project-overlay">
               <div class="project-tech">
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Mobile</span>
               </div>
             </div>
           </div>
           <div class="project-content">
-            <h3>RuleTrainer.in</h3>
-            <p>A comprehensive corporate training platform featuring user authentication, interactive course modules, real-time progress tracking, and an intelligent admin panel for managing trainees and analytics.</p>
+            <h3>Travelo</h3>
+            <span class="project-badge">Smart India Hackathon Winner</span>
+            <p>AI-powered travel management platform — a Flutter + Firebase full-stack mobile app featuring trip planning, real-time tracking, expense management, travel journaling, and social sharing.</p>
+            <div class="project-links">
+              <a href="https://github.com/abhijeeth149" target="_blank" class="btn btn-primary">
+                <i class="fab fa-github"></i> Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="finvae.png" alt="Finvae Finance Project" class="project-img">
+            <div class="project-overlay">
+              <div class="project-tech">
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">MySQL</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Finvae Finance</h3>
+            <span class="project-badge">Freelance Project</span>
+            <p>Smart loan & mortgage brokerage platform with a PHP + MySQL backend, multi-lender comparison, EMI calculator, personalized recommendations, and consultation management.</p>
+            <div class="project-links">
+              <a href="https://finvaefinance.com" target="_blank" class="btn btn-primary">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="ruletrainer1.png" alt="RuleTrainer Project" class="project-img">
+            <div class="project-overlay">
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Full-Stack</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>RuleTrainers.in</h3>
+            <span class="project-badge">In Production</span>
+            <p>A comprehensive corporate training platform featuring user authentication, interactive course modules, real-time progress tracking, and an intelligent admin panel.</p>
             <div class="project-links">
               <a href="https://ruletrainers.in" target="_blank" class="btn btn-primary">
                 <i class="fas fa-external-link-alt"></i> Live Demo
               </a>
               <a href="https://github.com/abhijeeth149" target="_blank" class="btn btn-secondary">
                 <i class="fab fa-github"></i> Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="vidhyaksha.png" alt="Vidhyaksha Project" class="project-img">
+            <div class="project-overlay">
+              <div class="project-tech">
+                <span class="tech-tag">YOLOv8x</span>
+                <span class="tech-tag">Streamlit</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Vidhyaksha</h3>
+            <span class="project-badge">Computer Vision</span>
+            <p>AI classroom human detection system using YOLOv8x for real-time computer vision, with a Streamlit dashboard for attendance and occupancy monitoring.</p>
+            <div class="project-links">
+              <a href="https://github.com/abhijeeth149/human_detection_project" target="_blank" class="btn btn-primary">
+                <i class="fab fa-github"></i> View Code
               </a>
             </div>
           </div>
@@ -1165,7 +1454,8 @@
           </div>
           <div class="project-content">
             <h3>Purv-Vaibhav HACKX</h3>
-            <p>An AI-powered cultural tourism assistant that uses Natural Language Processing to recommend historical places and provide cultural insights. Winner of college hackathon.</p>
+            <span class="project-badge">College Hackathon Winner</span>
+            <p>An AI-powered cultural tourism assistant chatbot that uses Natural Language Processing to recommend historical places and provide cultural insights.</p>
             <div class="project-links">
               <a href="https://github.com/abhijeeth149/Purv-Vaibahav-HACKX-" target="_blank" class="btn btn-primary">
                 <i class="fab fa-github"></i> View Code
@@ -1196,6 +1486,28 @@
           </div>
         </div>
 
+        <div class="project-card">
+          <div class="project-image">
+            <img src="ml_suite.png" alt="ML Model Implementation Suite" class="project-img">
+            <div class="project-overlay">
+              <div class="project-tech">
+                <span class="tech-tag">KNN</span>
+                <span class="tech-tag">Decision Trees</span>
+                <span class="tech-tag">Regression</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>ML Model Implementation Suite</h3>
+            <p>End-to-end implementations of KNN, Decision Trees, and Linear Regression with detailed performance analysis and benchmarking.</p>
+            <div class="project-links">
+              <a href="https://github.com/abhijeeth149/MACHINE-LEARNING-MODEL-IMPLEMENTATION" target="_blank" class="btn btn-primary">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1212,24 +1524,52 @@
           </div>
           <div class="skill-list">
             <span class="skill-item">Python</span>
-            <span class="skill-item">C</span>
+            <span class="skill-item">Dart (Flutter)</span>
+            <span class="skill-item">PHP</span>
             <span class="skill-item">JavaScript</span>
             <span class="skill-item">HTML5</span>
             <span class="skill-item">CSS3</span>
+            <span class="skill-item">Django</span>
           </div>
         </div>
 
         <div class="skill-category">
           <div class="skill-header">
             <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
-            <h3>Web Development</h3>
+            <h3>Web & Mobile</h3>
           </div>
           <div class="skill-list">
-            <span class="skill-item">Full-Stack</span>
-            <span class="skill-item">React</span>
-            <span class="skill-item">Node.js</span>
-            <span class="skill-item">REST APIs</span>
+            <span class="skill-item">Full-Stack Development</span>
+            <span class="skill-item">Flutter</span>
+            <span class="skill-item">Firebase</span>
             <span class="skill-item">Responsive Design</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-header">
+            <div class="skill-icon"><i class="fas fa-database"></i></div>
+            <h3>Backend & Databases</h3>
+          </div>
+          <div class="skill-list">
+            <span class="skill-item">PHP + MySQL</span>
+            <span class="skill-item">Python Backend</span>
+            <span class="skill-item">Django</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-header">
+            <div class="skill-icon"><i class="fas fa-robot"></i></div>
+            <h3>Automation & Tools</h3>
+          </div>
+          <div class="skill-list">
+            <span class="skill-item">Selenium</span>
+            <span class="skill-item">n8n</span>
+            <span class="skill-item">openpyxl</span>
+            <span class="skill-item">Git</span>
+            <span class="skill-item">GitHub</span>
+            <span class="skill-item">VS Code</span>
           </div>
         </div>
 
@@ -1242,22 +1582,38 @@
             <span class="skill-item">Scikit-learn</span>
             <span class="skill-item">NumPy</span>
             <span class="skill-item">Pandas</span>
-            <span class="skill-item">Regression</span>
-            <span class="skill-item">Classification</span>
+            <span class="skill-item">YOLOv8</span>
           </div>
         </div>
+      </div>
 
-        <div class="skill-category">
-          <div class="skill-header">
-            <div class="skill-icon"><i class="fas fa-tools"></i></div>
-            <h3>Tools & Platforms</h3>
+      <div class="certs-list">
+        <div class="cert-item">
+          <i class="fas fa-certificate"></i>
+          <div>
+            <h4>Machine Learning (ML) in Hindi</h4>
+            <p>NPTEL Elite — 65% — Jul–Oct 2025</p>
           </div>
-          <div class="skill-list">
-            <span class="skill-item">Git</span>
-            <span class="skill-item">GitHub</span>
-            <span class="skill-item">VS Code</span>
-            <span class="skill-item">Linux</span>
-            <span class="skill-item">Google Colab</span>
+        </div>
+        <div class="cert-item">
+          <i class="fas fa-certificate"></i>
+          <div>
+            <h4>Programming in Python</h4>
+            <p>SWAYAM — 86% — Issued 21 Jun 2024</p>
+          </div>
+        </div>
+        <div class="cert-item">
+          <i class="fas fa-certificate"></i>
+          <div>
+            <h4>Web Technology</h4>
+            <p>SWAYAM — 67% — Issued 11 Feb 2025</p>
+          </div>
+        </div>
+        <div class="cert-item">
+          <i class="fas fa-certificate"></i>
+          <div>
+            <h4>Python (Basic)</h4>
+            <p>HackerRank — Issued 11 Mar 2025</p>
           </div>
         </div>
       </div>
@@ -1341,7 +1697,7 @@
       </div>
 
       <p class="copyright">
-        &copy; 2025 Gandla Abhijeeth. Crafted with <i class="fas fa-heart" style="color: #f5576c;"></i> and lots of <i class="fas fa-coffee" style="color: #8b5cf6;"></i>
+        &copy; 2026 Gandla Abhijeeth. Crafted with <i class="fas fa-heart" style="color: #f5576c;"></i> and lots of <i class="fas fa-coffee" style="color: #8b5cf6;"></i>
       </p>
     </div>
   </footer>
@@ -1352,7 +1708,7 @@
     const roles = [
       "intelligent web applications",
       "machine learning models",
-      "scalable backend systems",
+      "automation pipelines",
       "beautiful user experiences"
     ];
 
@@ -1464,5 +1820,3 @@
 
 </body>
 </html>
-
-
